@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11</title>
+
+    <style>
+        :root {
+            --bg: #fff8ef;
+            --card-bg: #ffffff;
+            --primary: #e67e22;
+            --text: #5d4037;
+            --border: #ffcfaa;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: var(--card-bg);
+            max-width: 700px;
+            margin: auto;
+            padding: 28px;
+            border-radius: 22px;
+            border: 2px solid var(--border);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            position: relative;
+            z-index: 5;
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 22px;
+            color: var(--primary);
+            margin: 0 0 15px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        /* Responsive video */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .decor {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .decor span {
+            font-size: 33px;
+            animation: float 2.8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Hoa rơi */
+        .flower-fall {
+            position: fixed;
+            top: -20px;
+            font-size: 24px;
+            animation: fall linear infinite;
+            opacity: 0.9;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (min-width: 768px) {
+            h2 { font-size: 26px; }
+            p { font-size: 18px; }
+            .decor span { font-size: 38px; }
+            .flower-fall { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🌸 Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11 🌸</h2>
+        <p>
+            Xin gửi lời tri ân sâu sắc tới các thầy cô – những người đã dành cả tâm huyết,
+            tình thương và sự tận tụy để dẫn dắt chúng em trên con đường tri thức.
+        </p>
+
+        <!-- Video YouTube -->
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/oGg4mupzJnc" 
+                title="Happy Teachers' Day"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="decor">
+            <span>🌺</span>
+            <span>🌸</span>
+            <span>🌷</span>
+            <span>💐</span>
+            <span>🌼</span>
+        </div>
+    </div>
+
+    <script>
+        const flowers = ["🌸", "🌺", "🌷", "💐", "🌼"];
+
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.classList.add("flower-fall");
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 9000);
+        }
+
+        setInterval(createFlower, 150);
+    </script>
+
+</body>
+</html>
