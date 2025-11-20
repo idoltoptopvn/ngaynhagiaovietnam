@@ -56,7 +56,7 @@
             line-height: 1.5;
         }
 
-        /* Responsive video */
+        /* Responsive YouTube Player */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -66,7 +66,7 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
         }
 
-        .video-wrapper iframe {
+        #player {
             position: absolute;
             top: 0;
             left: 0;
@@ -106,13 +106,6 @@
             0% { transform: translateY(0) rotate(0deg); }
             100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
         }
-
-        @media (min-width: 768px) {
-            h2 { font-size: 26px; }
-            p { font-size: 18px; }
-            .decor span { font-size: 38px; }
-            .flower-fall { font-size: 28px; }
-        }
     </style>
 </head>
 <body>
@@ -124,15 +117,9 @@
             tình thương và sự tận tụy để dẫn dắt chúng em trên con đường tri thức.
         </p>
 
-        <!-- Video YouTube -->
+        <!-- Player YouTube API -->
         <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/oGg4mupzJnc" 
-                title="Happy Teachers' Day"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+            <div id="player"></div>
         </div>
 
         <div class="decor">
@@ -144,7 +131,30 @@
         </div>
     </div>
 
+    <!-- YOUTUBE IFRAME API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
     <script>
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: 'oGg4mupzJnc', // ID video
+                playerVars: {
+                    autoplay: 0,
+                    playsinline: 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.setPlaybackQuality('hd1080'); // Ép 1080p
+        }
+
+        // Hiệu ứng hoa rơi
         const flowers = ["🌸", "🌺", "🌷", "💐", "🌼"];
 
         function createFlower() {
@@ -158,8 +168,4 @@
             setTimeout(() => flower.remove(), 9000);
         }
 
-        setInterval(createFlower, 150);
-    </script>
-
-</body>
-</html>
+        setInterval(createF
